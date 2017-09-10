@@ -18,6 +18,7 @@ const Header = props => {
                     size={25}
                 />
             </TouchableWithoutFeedback>
+            <Image style={styles.logo} source={require('./../images/Netflix-logo.png')} />
             <TouchableWithoutFeedback >
             <Icon 
                 name="search"
