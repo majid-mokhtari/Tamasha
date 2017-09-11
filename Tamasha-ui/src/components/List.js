@@ -63,7 +63,7 @@ class List extends Component {
 
     render(){
         return (
-            <View >
+            <View style={{backgroundColor: 'black'}}>
                 <View >
                     <Text style={styles.text} >My List</Text>
                     <FlatList
@@ -93,6 +93,6 @@ const styles = StyleSheet.create({
         width: 120, 
         height: 180, 
         marginLeft: 5
-    }
+    },
 })
 export default List;

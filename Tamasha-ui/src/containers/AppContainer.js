@@ -7,15 +7,40 @@ import {
 import List from './../components/List'
 import Slider from './../components/Slider'
 import Header from './../components/Header'
+import SideMenu from 'react-native-side-menu'
+import Menu from './../components/Menu'
 
 class AppContainer extends Component {
+
+    constructor(props){
+        super(props);
+        this.state = {
+            isOpen: false
+        }
+    }
+
+    toggle(){
+        this.setState({
+            isOpen: !this.state.isOpen
+        })
+    }
+
+    updateMenu(isOpen){
+        this.setState({isOpen})
+    }
 
     render(){
         return (
             <View style={styles.conntainer} >
-                <Header />
-                <Slider />
-                <List />
+                <SideMenu
+                    menu={<Menu />}
+                    isOpen={this.state.isOpen}
+                    onChange={(isOpen) => this.updateMenu(isOpen)}
+                >
+                    <Header toggle={this.toggle.bind(this)} />
+                    <Slider />
+                    <List />
+                </SideMenu>
             </View>
         )
     }
@@ -23,8 +48,8 @@ class AppContainer extends Component {
 
 const styles = StyleSheet.create({
     conntainer: {
-        backgroundColor: 'black',
-        height: '100%'
+        height: '100%',
+        backgroundColor: 'black'
     }
 })
 export default AppContainer;

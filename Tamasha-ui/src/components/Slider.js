@@ -31,7 +31,11 @@ class Slider extends Component {
 
     render(){
         return (
-            <Swiper style={styles.wrapper} showsButtons={true}>
+            <Swiper 
+                autoplay
+                height={240}
+                style={styles.wrapper} showsButtons={true}
+            >
                 {this._renderSliderItems()}
             </Swiper>
         )
@@ -40,9 +44,12 @@ class Slider extends Component {
 
 const {width} = Dimensions.get('window');
 var styles = StyleSheet.create({
+    wrapper: {
+        backgroundColor: 'black'
+    },
     image: {
         width: width,
-        height: '100%', 
+        height: 300,
         marginLeft: 5
     }
   })
