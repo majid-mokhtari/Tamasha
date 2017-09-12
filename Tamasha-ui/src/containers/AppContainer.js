@@ -1,22 +1,33 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import {
-    View, 
     Text,
+    View,
     StyleSheet
 } from 'react-native'
-import List from './../components/List'
-import Slider from './../components/Slider'
+
+import {connect} from 'react-redux'
+
 import Header from './../components/Header'
-import SideMenu from 'react-native-side-menu'
+import List from './../components/List'
 import Menu from './../components/Menu'
+import Slide from './../components/Slider'
+import Genres from './../components/Genres'
 
-class AppContainer extends Component {
+import SideMenu from 'react-native-side-menu'
 
+class App extends Component {
     constructor(props){
-        super(props);
+        super(props)
         this.state = {
-            isOpen: false
+            isOpen: false,
+            itemSelected: 'Home'
         }
+        this.getTwoRows = this.getTwoRows.bind(this)
+        this.itemSelected = this.itemSelected.bind(this)
+    }
+
+    static navigationOptions = {
+        headerVisible: false
     }
 
     toggle(){
@@ -25,21 +36,55 @@ class AppContainer extends Component {
         })
     }
 
+    itemSelected(item){
+        this.setState({
+            itemSelected: item,
+            isOpen: false
+        })
+    }
+
     updateMenu(isOpen){
         this.setState({isOpen})
     }
 
+    getTwoRows(){
+        const {shows} = this.props
+        const array = shows.slice(0)
+        const val = Math.floor(array.length / 2)
+        const newArray = array.splice(0, val)
+        return [
+            array,
+            newArray
+        ]
+    }
+
     render(){
         return (
-            <View style={styles.conntainer} >
+            <View style={{flex: 1}}>
                 <SideMenu
-                    menu={<Menu />}
+                    menu={<Menu 
+                        navigation={this.props.navigation}
+                        itemSelected={this.itemSelected} 
+                        itemSelectedValue={this.state.itemSelected}
+                    />}
                     isOpen={this.state.isOpen}
                     onChange={(isOpen) => this.updateMenu(isOpen)}
+                    style={{flex: 1}}
                 >
-                    <Header toggle={this.toggle.bind(this)} />
-                    <Slider />
-                    <List />
+                    <View style={[{flex: 1}, styles.container]}>
+                        <Header navigation={this.props.navigation} toggle={this.toggle.bind(this)} />
+                        {this.state.itemSelected == 'Home' ? <View style={{flex: 1}}>
+                            <Slide />
+                            <List
+                                getTwoRows={this.getTwoRows} 
+                                navigation={this.props.navigation}
+                            />
+                        </View> : 
+                        <Genres
+                            navigation={this.props.navigation} 
+                            item={this.state.itemSelected}
+                        />}
+                    </View>
                 </SideMenu>
             </View>
         )
@@ -47,9 +92,9 @@ class AppContainer extends Component {
 }
 
 const styles = StyleSheet.create({
-    conntainer: {
-        height: '100%',
+    container: {
         backgroundColor: 'black'
     }
 })
-export default AppContainer;
+
+export default connect(state => ({shows: state.shows}))(App)

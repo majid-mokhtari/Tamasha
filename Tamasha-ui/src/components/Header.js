@@ -6,9 +6,11 @@ import {
     TouchableWithoutFeedback,
     Image
 } from 'react-native'
+
 import Icon from 'react-native-vector-icons/FontAwesome'
 
 const Header = props => {
+    const {navigate} = props.navigation
     return (
         <View style={styles.container}>
             <TouchableWithoutFeedback onPress={() => props.toggle()}>
@@ -19,7 +21,7 @@ const Header = props => {
                 />
             </TouchableWithoutFeedback>
             <Image style={styles.logo} source={require('./../images/Netflix-logo.png')} />
-            <TouchableWithoutFeedback >
+            <TouchableWithoutFeedback onPress={() => navigate('Search')}>
             <Icon 
                 name="search"
                 color="white"
@@ -33,7 +35,7 @@ const Header = props => {
 const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
-        height: 60,
+        height: 80,
         alignItems: 'center',
         justifyContent:'space-between',
         backgroundColor: 'black',
