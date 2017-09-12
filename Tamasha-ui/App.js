@@ -30,7 +30,7 @@ class App extends Component {
 
 const store = getStore(navReducer);
 const AppIndex = connect( state => ({ nav: state.nav }) )(App)
-debugger;
+
 export default Index = () => {
     return (
         <Provider store={store}>
