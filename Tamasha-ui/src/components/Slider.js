@@ -33,6 +33,7 @@ class Slider extends Component {
         return (
             <Swiper 
                 autoplay
+                height={240}
                 style={styles.wrapper} 
                 showsButtons={true}
             >
