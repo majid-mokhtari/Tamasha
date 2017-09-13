@@ -12,9 +12,9 @@ class Slider extends Component {
         super(props)
         this.state = {
             imagesSlider: [
-                require('./../images/1.jpg'),
-                require('./../images/2.jpg'),
-                require('./../images/3.jpg')
+                require('./../images/dorehami.jpg'),
+                require('./../images/Gashte-ershad-2.jpg'),
+                require('./../images/khandevaneh.jpg')
             ]
         }
     }

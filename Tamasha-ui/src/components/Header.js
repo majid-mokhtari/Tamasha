@@ -20,7 +20,7 @@ const Header = props => {
                     size={25}
                 />
             </TouchableWithoutFeedback>
-            <Image style={styles.logo} source={require('./../images/Netflix-logo.png')} />
+            <Text style={styles.title}>تماشا</Text>
             <TouchableWithoutFeedback onPress={() => navigate('Search')}>
             <Icon 
                 name="search"
@@ -45,6 +45,12 @@ const styles = StyleSheet.create({
     logo: {
         width: 120,
         height: 40
+    },
+    title: {
+        color: "white", 
+        fontSize: 30,
+        fontFamily: 'Menlo',
+        fontWeight: "bold"
     }
 })
 
