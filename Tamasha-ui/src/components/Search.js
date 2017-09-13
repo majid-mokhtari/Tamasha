@@ -10,10 +10,11 @@ import {
     ScrollView,
     Image
 } from 'react-native'
-
-const {width, height} = Dimensions.get('window')
+import {connect} from 'react-redux'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import {getAll} from '../api/api'
+
+const {width, height} = Dimensions.get('window')
 
 class Search extends Component {
     constructor(props){
@@ -29,8 +30,8 @@ class Search extends Component {
     }
 
     filter(text){
-        const data = getAll()
-        const newData = data.filter(function(item){
+        const {shows} = this.props
+        const newData = shows.filter(function(item){
             const itemData = item.name.toUpperCase()
             const textData = text.toUpperCase()
             return itemData.indexOf(textData) > -1
@@ -152,4 +153,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default Search
+export default connect(state => ({shows: state.shows}))(Search)

@@ -16,7 +16,7 @@ import Genres from './../components/Genres'
 
 import SideMenu from 'react-native-side-menu'
 
-class App extends Component {
+class AppContainer extends Component {
     constructor(props){
         super(props)
         this.state = {
@@ -100,4 +100,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default connect(state => ({shows: state.shows}))(App)
+export default connect(state => ({shows: state.shows}))(AppContainer)
