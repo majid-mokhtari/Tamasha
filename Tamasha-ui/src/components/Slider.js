@@ -33,8 +33,8 @@ class Slider extends Component {
         return (
             <Swiper 
                 autoplay
-                height={240}
-                style={styles.wrapper} showsButtons={true}
+                style={styles.wrapper} 
+                showsButtons={true}
             >
                 {this._renderSliderItems()}
             </Swiper>
@@ -49,7 +49,7 @@ var styles = StyleSheet.create({
     },
     image: {
         width: width,
-        height: 300,
+        height: "100%",
         marginLeft: 5
     }
   })

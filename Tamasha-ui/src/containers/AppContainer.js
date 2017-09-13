@@ -74,7 +74,9 @@ class App extends Component {
                     <View style={[{flex: 1}, styles.container]}>
                         <Header navigation={this.props.navigation} toggle={this.toggle.bind(this)} />
                         {this.state.itemSelected == 'Home' ? <View style={{flex: 1}}>
-                            <Slide />
+                            <View style={{height: 240}} >
+                                <Slide />
+                            </View>
                             <List
                                 getTwoRows={this.getTwoRows} 
                                 navigation={this.props.navigation}

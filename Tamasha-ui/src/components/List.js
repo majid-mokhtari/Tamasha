@@ -23,7 +23,7 @@ class List extends Component {
             <TouchableWithoutFeedback onPress={
                 () => navigate('Details', {item: item})}
             >
-                <Image style={{width: 120, height: 180}} source={{uri: item.image}}/>
+                <Image style={{width: 120, height: 180, marginLeft: 5}} source={{uri: item.image}}/>
             </TouchableWithoutFeedback>
         )
     }
@@ -36,7 +36,6 @@ class List extends Component {
                     <Text style={styles.text}>My List</Text>
                     <FlatList
                         horizontal
-                        SeparatorComponent={() => <View style={{width: 5}} />}
                         renderItem={({item}) => this._renderItem(item)} 
                         data={getTwoRows()[0]}
                     />
@@ -45,7 +44,6 @@ class List extends Component {
                     <Text style={styles.text}>Top Picks For You</Text>
                     <FlatList
                         horizontal
-                        SeparatorComponent={() => <View style={{width: 5}} />}
                         renderItem={({item}) => this._renderItem(item)} 
                         data={getTwoRows()[1]}
                     />
