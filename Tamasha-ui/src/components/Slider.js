@@ -14,7 +14,7 @@ class Slider extends Component {
             imagesSlider: [
                 require('./../images/dorehami.jpg'),
                 require('./../images/Gashte-ershad-2.jpg'),
-                require('./../images/khandevaneh.jpg')
+                require('./../images/abado-yekrooz.jpg')
             ]
         }
     }
