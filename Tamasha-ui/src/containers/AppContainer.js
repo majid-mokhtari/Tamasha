@@ -2,7 +2,8 @@ import React, {Component} from 'react'
 import {
     Text,
     View,
-    StyleSheet
+    StyleSheet,
+    ScrollView
 } from 'react-native'
 
 import {connect} from 'react-redux'
@@ -71,7 +72,7 @@ class App extends Component {
                     onChange={(isOpen) => this.updateMenu(isOpen)}
                     style={{flex: 1}}
                 >
-                    <View style={[{flex: 1}, styles.container]}>
+                    <ScrollView style={[{flex: 1}, styles.container]}>
                         <Header navigation={this.props.navigation} toggle={this.toggle.bind(this)} />
                         {this.state.itemSelected == 'Home' ? <View style={{flex: 1}}>
                             <View style={{height: 240}} >
@@ -86,7 +87,7 @@ class App extends Component {
                             navigation={this.props.navigation} 
                             item={this.state.itemSelected}
                         />}
-                    </View>
+                    </ScrollView>
                 </SideMenu>
             </View>
         )
