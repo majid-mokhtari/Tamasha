@@ -1,15 +1,40 @@
-import React from 'react';
-import { View } from 'react-native';
-import AppContainer from './src/containers/AppContainer';
+import React, {Component} from 'react'
+import { Provider, connect } from 'react-redux'
+import { StackNavigator, addNavigationHelpers } from 'react-navigation'
 
-class App extends React.Component {
-  render() {
-    return (
-      <View >
-        <AppContainer />
-      </View>
-    );
-  }
+import Routes from './src/config/routes'
+
+import getStore from './src/store'
+
+const Navigator = StackNavigator(Routes, {
+    headerMode: 'screen'
+})
+
+const navReducer = (state, action) => {
+    const newState = Navigator.router.getStateForAction(action, state)
+    return newState || state
 }
 
-export default App;
+class App extends Component {
+    render(){
+        return (
+            <Navigator 
+                navigation={addNavigationHelpers({
+                    dispatch: this.props.dispatch,
+                    state: this.props.nav
+                })}
+            />
+        )
+    }
+}
+
+const store = getStore(navReducer);
+const AppIndex = connect( state => ({ nav: state.nav }) )(App)
+
+export default Index = () => {
+    return (
+        <Provider store={store}>
+            <AppIndex />
+        </Provider>
+    )
+}

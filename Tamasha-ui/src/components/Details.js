@@ -36,7 +36,7 @@ class Details extends Component {
         headerVisible: false
     }
     componentWillMount() {
-        Orientation.lockToPortrait()
+        //Orientation.lockToPortrait()
     }
 
     onShare(){
