@@ -33,7 +33,7 @@ class Details extends Component {
         }
     }
     static navigationOptions = {
-        headerVisible: false
+        header: null
     }
     componentWillMount() {
         //Orientation.lockToPortrait()
@@ -83,9 +83,10 @@ class Details extends Component {
         const {params} = this.props.navigation.state
         const {cast} = params.item.details
         const personCast = []
-        for(let i = 0; i < 5; i++){
-            personCast.push(cast[i].person.name)
-        }
+        personCast.push(cast);
+        // for(let i = 0; i < 5; i++){
+        //     personCast.push(cast[i].person.name)
+        // }
         return personCast.join(", ");
     }
 
@@ -114,6 +115,7 @@ class Details extends Component {
         })
         const {goBack} = this.props.navigation
         const {params} = this.props.navigation.state
+        debugger;
         const {episodes} = params.item.details
         const {navigate} = this.props.navigation
         const {name} = params.item
